@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import styled from 'styled-components';
+
+const StyledHello = styled.h1`
+  color: ${(props) => (props.color ||  'blue' : 'red'))};
+  span {
+    color: blue;
+  }
+
+  @media (min-width: 768px) {
+    span {
+      display: block;
+    }
+  }
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <StyledHello>
+        Hello, world!<span>Hello, world!</span>
+      </StyledHello>
+      <button>文字色を変える</button>
     </div>
   );
-}
+};
 
 export default App;
