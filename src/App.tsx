@@ -1,29 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { HashRouter, Route, Routes, Link } from 'react-router-dom';
 
 import './App.css';
 import styled from 'styled-components';
+import allActions from './actions';
+import Header from './components/Header';
+import Index from './components/Index';
+import Item from './components/Item';
+import entryTeam from './reducers/team';
 
-const StyledHello = styled.h1`
-  color: ${(props) => (props.color ||  'blue' : 'red'))};
-  span {
-    color: blue;
-  }
+const App: React.FC = () => {
+  const [item, setItem] = useState<string>('');
 
-  @media (min-width: 768px) {
-    span {
-      display: block;
+  const entryItem = useSelector((state: RootState) => state.entryItem);
+  const dispatch = useDispatch();
+  const itemName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (item) {
+      if (item.length < 33) {
+        setItem(event.target.value);
+        console.log(item);
+      }
     }
-  }
-`;
+  };
+  const defaultItem = () => {
+    setItem(item.slice(1));
+    console.log(item);
+  };
+  const nullItem = () => {
+    setItem(' ');
+    console.log(item);
+  };
+  console.log(location.href);
 
-const App = () => {
   return (
-    <div>
-      <StyledHello>
-        Hello, world!<span>Hello, world!</span>
-      </StyledHello>
-      <button>文字色を変える</button>
-    </div>
+    <HashRouter>
+      <Header />
+      <div className="App">
+        <div className="Top">
+          <div className="TopContainer">
+            <div className="TopContainer_Left">
+              <div className="TopHead">
+                <div className="TopButton">
+                  <input
+                    className="TopButton__name"
+                    type="text"
+                    id="name"
+                    onChange={itemName}
+                    value={!item ? '作成したい大会・部門名を入力' : item}
+                    onBlur={defaultItem}
+                    onClick={nullItem}
+                  ></input>
+                  <button
+                    onClick={() =>
+                      dispatch(allActions.entryAction.addItem(item))
+                    }
+                    className="TopButton__button"
+                  >
+                    Create
+                  </button>
+                </div>
+                <div className="TopHead__title">＜Category-List＞</div>
+              </div>
+              <ul className="TopList">
+                {entryItem.itemList.map((item: string) => (
+                  <li key={item} className="TopList__item">
+                    <div className="TopList__itemName">
+                      <p>{item}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="TopContainer__Right">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/:item" element={<Item />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </div>
+    </HashRouter>
   );
 };
 
