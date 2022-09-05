@@ -32,7 +32,6 @@ export declare global {
     param: string;
   }
   interface Pro {
-    idnum: number;
     users: string;
     point: number;
     score: number;

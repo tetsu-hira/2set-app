@@ -537,12 +537,12 @@ const Item: React.FC = () => {
       });
       update.score = total;
       // 勝ち点の合計値をamountに代入
-      const sumpoint: Mat[] = Plan.filter((plans: Mat) => {
+      const sumPoint: Mat[] = Plan.filter((plans: Mat) => {
         if (countPlan) {
           return plans.users === countPlan.users;
         }
       });
-      const amount = sumpoint.reduce(function (sum: number, element: Mat) {
+      const amount = sumPoint.reduce(function (sum: number, element: Mat) {
         return sum + element.point;
       }, 0);
       // 合計をListに反映
@@ -691,10 +691,10 @@ const Item: React.FC = () => {
       );
       update.score = total;
       // 勝ち点の合計値をamountに代入
-      const sumpoint: Mat[] = Plan.filter((plans: Mat) => {
+      const sumPoint: Mat[] = Plan.filter((plans: Mat) => {
         return plans.users === countPlan.users;
       });
-      const amount = sumpoint.reduce(function (sum: number, element: Mat) {
+      const amount = sumPoint.reduce(function (sum: number, element: Mat) {
         return sum + element.point;
       }, 0);
       // 合計をListに反映

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { HashRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import './App.css';
-import styled from 'styled-components';
 import allActions from './actions';
 import Header from './components/Header';
 import Index from './components/Index';
@@ -34,12 +33,12 @@ const App: React.FC = () => {
   console.log(location.href);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Header />
       <div className="App">
         <div className="Top">
           <div className="TopContainer">
-            <div className="TopContainer_Left">
+            <div className="TopContainer__Left">
               <div className="TopHead">
                 <div className="TopButton">
                   <input
@@ -66,7 +65,9 @@ const App: React.FC = () => {
                 {entryItem.itemList.map((item: string) => (
                   <li key={item} className="TopList__item">
                     <div className="TopList__itemName">
-                      <p>{item}</p>
+                      <Link to={`./${item}`} className="TopList__itemName">
+                        <p>{item}</p>
+                      </Link>
                     </div>
                   </li>
                 ))}
@@ -81,7 +82,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

@@ -1,21 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Icon from './image/search.png';
 
-const HeaderBlock = styled.div`
-  height: 48px;
-  background-color: #4d80b0;
-  width: 100%;
-  display: flex;
-  z-index: 100;
-  min-width: 960px;
-  position: relative;
-`;
-
 const Header: React.FC = () => {
   return (
-    <HeaderBlock>
+    <div className="Header">
       <div className="HeaderContainer">
         <div className="WebTitle">2setMatch</div>
         <div className="HeaderRight">
@@ -27,7 +16,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-    </HeaderBlock>
+    </div>
   );
 };
 

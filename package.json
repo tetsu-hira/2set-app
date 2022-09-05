@@ -2,6 +2,7 @@
   "name": "2set-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -58,6 +59,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.1",
-    "prettier": "^2.7.1"
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.8"
   }
 }
