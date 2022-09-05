@@ -44,7 +44,7 @@ const Item: React.FC = () => {
     setTeam(team.slice(1));
   };
 
-  const param = window.location.hash;
+  const param = window.location.pathname;
 
   const List = entryTeam.teamList.filter((item: Param) => item.param === param);
   console.log(List);

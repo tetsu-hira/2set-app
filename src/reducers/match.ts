@@ -1,7 +1,7 @@
 const initialState = {
   matchList: [],
 };
-// const path = window.location.hash;
+// const path = window.location.pathname;
 
 const addMatch = (array: any, team: string, param: string) => {
   console.log(param);
@@ -16,9 +16,9 @@ const addMatch = (array: any, team: string, param: string) => {
         time2: 0,
         point: 0,
         score: 0,
-        param: window.location.hash,
+        param: window.location.pathname,
       },
-    ]),
+    ])
   );
 }; //重複データが入らないようにするための対応
 
@@ -33,7 +33,11 @@ const controlMatch = (state = initialState, action: Act) => {
     case 'ADD_Match':
       return {
         ...state,
-        matchList: addMatch(state.matchList, action.payload, window.location.hash),
+        matchList: addMatch(
+          state.matchList,
+          action.payload,
+          window.location.pathname
+        ),
       };
     case 'REMOVE_Match':
       return {

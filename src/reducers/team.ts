@@ -1,11 +1,12 @@
 const initialState = {
   teamList: [],
 };
-const path = window.location.hash;
+const path = window.location.pathname;
 
 const addTeam = (array: any, team: string, param: string) => {
   console.log(param);
   console.log(array);
+  console.log(path);
   return Array.from(
     new Set([
       ...array,
@@ -17,9 +18,9 @@ const addTeam = (array: any, team: string, param: string) => {
         times: 0,
         count: 0,
         ratio: 0,
-        param: window.location.hash,
+        param: window.location.pathname,
       },
-    ]),
+    ])
   );
 }; //重複データが入らないようにするための対応
 
@@ -32,7 +33,11 @@ const entryTeam = (state = initialState, action: Act) => {
     case 'ADD_Team':
       return {
         ...state,
-        teamList: addTeam(state.teamList, action.payload, window.location.hash),
+        teamList: addTeam(
+          state.teamList,
+          action.payload,
+          window.location.pathname
+        ),
       };
     // case 'REMOVE_Team':
     //   return {
