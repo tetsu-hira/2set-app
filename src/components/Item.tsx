@@ -517,40 +517,30 @@ const Item: React.FC = () => {
     }
     // ここから繰り返し処理
     for (let i = 0; i < List.length; i++) {
-      const countPlan: Pro | undefined = List.find(
-        (elem: Pro) => List[i] === elem
-      );
+      const countPlan: Pro = List.find((elem: Pro) => List[i] === elem);
       // 得失点の合計値をtotalに代入
-      const sumCount: Pro[] = plan.filter((plans) => {
-        if (countPlan) {
-          return plans.users === countPlan.users;
-        }
+      const sumCount: Mat[] = Plan.filter((plans: Mat) => {
+        return plans.users === countPlan.users;
       });
-      const total = sumCount.reduce(function (sum: number, element: Pro) {
-        return sum + element.count;
+      const total = sumCount.reduce(function (sum: number, element: Mat) {
+        return sum + element.score;
       }, 0);
       // 合計をListに反映
-      const update: Pro = List.find((elem: Pro) => {
-        if (countPlan) {
-          elem.users === countPlan.users;
-        }
-      });
+      const update: Pro = List.find(
+        (elem: Pro) => elem.users === countPlan.users
+      );
       update.score = total;
       // 勝ち点の合計値をamountに代入
       const sumPoint: Mat[] = Plan.filter((plans: Mat) => {
-        if (countPlan) {
-          return plans.users === countPlan.users;
-        }
+        return plans.users === countPlan.users;
       });
       const amount = sumPoint.reduce(function (sum: number, element: Mat) {
         return sum + element.point;
       }, 0);
       // 合計をListに反映
-      const overwrite: Pro = List.find((elem: Pro) => {
-        if (countPlan) {
-          elem.users === countPlan.users;
-        }
-      });
+      const overwrite: Pro = List.find(
+        (elem: Pro) => elem.users === countPlan.users
+      );
       overwrite.point = amount;
     }
     // ここまで繰り返し
@@ -880,23 +870,13 @@ const Item: React.FC = () => {
                       <div className="FlexCount__Button">
                         <button
                           className="AddCount top"
-                          onClick={() =>
-                            handle1setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time1, 5)
-                            )
-                          }
+                          onClick={() => addTime1(index, 5)}
                         >
                           +
                         </button>
                         <button
                           className="SubCount top"
-                          onClick={() =>
-                            handle1setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time1, -1)
-                            )
-                          }
+                          onClick={() => addTime1(index, -1)}
                         >
                           -
                         </button>
@@ -906,23 +886,13 @@ const Item: React.FC = () => {
                       <div className="FlexCount__Button">
                         <button
                           className="AddCount bottom"
-                          onClick={() =>
-                            handle2setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time2, 5)
-                            )
-                          }
+                          onClick={() => addTime2(index, 5)}
                         >
                           <div className="operator">+</div>
                         </button>
                         <button
                           className="SubCount bottom"
-                          onClick={() =>
-                            handle2setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time2, -1)
-                            )
-                          }
+                          onClick={() => addTime2(index, -1)}
                         >
                           <div className="operator">-</div>
                         </button>
@@ -939,23 +909,13 @@ const Item: React.FC = () => {
                       <div className="FlexCount__Button">
                         <button
                           className="SubCount top"
-                          onClick={() =>
-                            handle1setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time1, -1)
-                            )
-                          }
+                          onClick={() => addTime1(index, -1)}
                         >
                           -
                         </button>
                         <button
                           className="AddCount top"
-                          onClick={() =>
-                            handle1setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time1, 5)
-                            )
-                          }
+                          onClick={() => addTime1(index, 5)}
                         >
                           +
                         </button>
@@ -965,23 +925,13 @@ const Item: React.FC = () => {
                       <div className="FlexCount__Button">
                         <button
                           className="SubCount bottom"
-                          onClick={() =>
-                            handle2setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time2, -1)
-                            )
-                          }
+                          onClick={() => addTime2(index, -1)}
                         >
                           -
                         </button>
                         <button
                           className="AddCount bottom"
-                          onClick={() =>
-                            handle2setPoint(
-                              index,
-                              window.myAPI.counter(index, item.time2, 5)
-                            )
-                          }
+                          onClick={() => addTime2(index, 5)}
                         >
                           +
                         </button>
