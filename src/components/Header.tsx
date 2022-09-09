@@ -44,7 +44,7 @@ const Header: FC<{
               About
             </li>
           </Link>
-          <Link
+          {/* <Link
             to="/user"
             className="HeaderLink__item"
             onClick={() => {
@@ -58,7 +58,7 @@ const Header: FC<{
             >
               Team
             </li>
-          </Link>
+          </Link> */}
         </ul>
         <div className="HeaderRight">
           <div className="search">

@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Index from './components/Index';
 import Item from './components/Item';
 import entryTeam from './reducers/team';
+import About from './components/About';
 
 const App: React.FC = () => {
   const [item, setItem] = useState<string>('');
@@ -83,6 +84,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/:item" element={<Item />} />
+                <Route path="/about" element={<About />} />
               </Routes>
             </div>
           </div>
