@@ -41,22 +41,39 @@
     }
     .HeaderLink {
       display: flex;
+      margin-left: 5.4rem;
+      margin-right: auto;
       &__item {
-        width: 5rem;
+        width: 6rem;
         margin: auto;
         text-align: center;
         height: 100%;
         line-height: 3rem;
         transition: 0.5s;
-        &:hover {
-          background-color: $BackColor;
-        }
+        background-color: $BackColor;
       }
       &__text {
-        color: $WhiteColor;
-        font-weight: bold;
+        color: $FontColor;
+        // font-weight: bold;
+        text-decoration: underline;
+        font-size: 1rem;
+        transition: 0.5s;
         &:hover {
-          color: $PrimaryColor;
+          color: $FontColor;
+          // font-weight: bold;
+        }
+      }
+      &__false {
+        color: $WhiteColor;
+        background-color: $PrimaryColor;
+        // font-weight: bold;
+        font-size: 1rem;
+        transition: 0.5s;
+        &:hover {
+          color: $FontColor;
+          // font-weight: bold;
+          text-decoration: underline;
+          background-color: $BackColor;
         }
       }
     }

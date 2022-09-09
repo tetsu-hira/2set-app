@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
@@ -8,9 +8,16 @@ import Header from './components/Header';
 import Index from './components/Index';
 import Item from './components/Item';
 import entryTeam from './reducers/team';
+import About from './components/About';
 
 const App: React.FC = () => {
   const [item, setItem] = useState<string>('');
+
+  const [stateProp, setStateProp] = useState<string>(window.location.pathname);
+
+  const updateState = (paths: string) => {
+    setStateProp(paths);
+  };
 
   const entryItem = useSelector((state: RootState) => state.entryItem);
   const dispatch = useDispatch();
@@ -34,7 +41,7 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header updateState={updateState} stateProp={stateProp} />
       <div className="App">
         <div className="Top">
           <div className="TopContainer">
@@ -77,6 +84,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/:item" element={<Item />} />
+                <Route path="/about" element={<About />} />
               </Routes>
             </div>
           </div>
