@@ -17,5 +17,10 @@
         }
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {"project": "./"}
+    }
   }
 }

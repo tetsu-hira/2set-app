@@ -4,11 +4,11 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import './App.css';
 import allActions from './actions';
+import About from './components/About';
 import Header from './components/Header';
 import Index from './components/Index';
 import Item from './components/Item';
 import entryTeam from './reducers/team';
-import About from './components/About';
 
 const App: React.FC = () => {
   const [item, setItem] = useState<string>('');
@@ -63,10 +63,10 @@ const App: React.FC = () => {
                     }
                     className="TopButton__button"
                   >
-                    Create
+                    作成
                   </button>
                 </div>
-                <div className="TopHead__title">＜Category-List＞</div>
+                <div className="TopHead__title">＜大会・部門一覧＞</div>
               </div>
               <ul className="TopList">
                 {entryItem.itemList.map((item: string) => (
