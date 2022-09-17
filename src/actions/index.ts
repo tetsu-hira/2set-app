@@ -3,6 +3,7 @@ import entryAction from './entryAction';
 import matchAction from './matchAction';
 import teamAction from './teamAction';
 import userActions from './userActions';
+import sortAction from './sortAction';
 
 const allActions = {
   counterActions,
@@ -10,6 +11,7 @@ const allActions = {
   entryAction,
   teamAction,
   matchAction,
+  sortAction,
 };
 
 export default allActions;

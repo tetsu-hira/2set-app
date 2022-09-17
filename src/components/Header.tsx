@@ -24,7 +24,7 @@ const Header: FC<{
                 stateProp === '/' ? 'HeaderLink__text' : 'HeaderLink__false'
               }
             >
-              Top
+              トップ
             </li>
           </Link>
           <Link
@@ -41,7 +41,7 @@ const Header: FC<{
                   : 'HeaderLink__false'
               }
             >
-              About
+              説明書
             </li>
           </Link>
           {/* <Link

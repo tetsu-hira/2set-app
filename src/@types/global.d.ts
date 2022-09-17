@@ -14,6 +14,9 @@ export declare global {
     controlMatch: {
       matchList;
     };
+    setSort: {
+      sort;
+    };
   }
   interface State {
     teamList: {

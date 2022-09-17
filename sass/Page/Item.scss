@@ -13,6 +13,11 @@
     border: 1px solid $PrimaryColor;
     &.id {
       width: 60px;
+      &:hover {
+        background-color: #ffffff;
+        color: $PrimaryColor;
+        transition: all 0.5s ease;
+      }
     }
     &.users {
       min-width: 300px;

@@ -63,7 +63,7 @@ const App: React.FC = () => {
                     }
                     className="TopButton__button"
                   >
-                    作成
+                    作 成
                   </button>
                 </div>
                 <div className="TopHead__title">＜大会・部門一覧＞</div>

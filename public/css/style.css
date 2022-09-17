@@ -552,6 +552,11 @@ button {
 .Item .ItemHead.id {
   width: 60px;
 }
+.Item .ItemHead.id:hover {
+  background-color: #ffffff;
+  color: #4d80b0;
+  transition: all 0.5s ease;
+}
 .Item .ItemHead.users {
   min-width: 300px;
 }

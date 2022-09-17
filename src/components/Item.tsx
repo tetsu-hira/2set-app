@@ -20,11 +20,12 @@ const Item: React.FC = () => {
   const [drawWin, setDrawWin] = useState<number>(0);
   const [drawDraw, setDrawDraw] = useState<number>(0);
   const [drawLose, setDrawLose] = useState<number>(0);
-  const [sort, setSort] = useState<Sor | undefined>();
 
   const entryTeam = useSelector((state: RootState) => state.entryTeam);
 
   const controlMatch = useSelector((state: RootState) => state.controlMatch);
+
+  const setSort = useSelector((state: RootState) => state.setSort);
 
   const dispatch = useDispatch();
   const teamName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,45 +73,8 @@ const Item: React.FC = () => {
     result2.times = result.length - 1;
   };
 
-  const KEYS = Object.keys(data);
+  const KEYS: string[] = Object.keys(data);
   // console.log(KEYS);
-
-  // ソート機能を実装
-  const sortList = useMemo(() => {
-    if (sort) {
-      let _sortList = List;
-      if (sort.key) {
-        _sortList = _sortList.sort((a: string, b: string) => {
-          a = a[sort.key];
-          b = b[sort.key];
-
-          if (a === b) {
-            return 0;
-          }
-          if (a > b) {
-            return 1 * sort.order;
-          }
-          if (a < b) {
-            return -1 * sort.order;
-          }
-        });
-      }
-      return _sortList;
-    }
-  }, [sort]);
-  // console.log(sort);
-  const handleSort = (key: number) => {
-    if (sort) {
-      if (sort.key === key) {
-        setSort({ ...sort, order: -sort.order });
-      } else {
-        setSort({
-          key: key,
-          order: -1,
-        });
-      }
-    }
-  };
 
   const handle1setPoint = (index: number, point: number) => {
     setTime1(point); //即時反映に必要なので消さない事
@@ -735,12 +699,12 @@ const Item: React.FC = () => {
                   dispatch(allActions.teamAction.addTeam(team, param));
                 }}
               >
-                Entry
+                登 録
               </button>
             </div>
             <div className="Insert">
               <div className="InsertContent">
-                <div className="InsertContent__text">WW</div>
+                <div className="InsertContent__text">勝ち</div>
                 <input
                   className="InsertContent__entry"
                   type="number"
@@ -749,7 +713,7 @@ const Item: React.FC = () => {
                 ></input>
               </div>
               <div className="InsertContent">
-                <div className="InsertContent__text">DW</div>
+                <div className="InsertContent__text">分勝</div>
                 <input
                   className="InsertContent__entry"
                   type="number"
@@ -758,7 +722,7 @@ const Item: React.FC = () => {
                 ></input>
               </div>
               <div className="InsertContent">
-                <div className="InsertContent__text">DD</div>
+                <div className="InsertContent__text">分分</div>
                 <input
                   className="InsertContent__entry"
                   type="number"
@@ -767,7 +731,7 @@ const Item: React.FC = () => {
                 ></input>
               </div>
               <div className="InsertContent">
-                <div className="InsertContent__text">DL</div>
+                <div className="InsertContent__text">分負</div>
                 <input
                   className="InsertContent__entry"
                   type="number"
@@ -778,15 +742,13 @@ const Item: React.FC = () => {
             </div>
           </div>
           <div className="Item">
-            <div className="ItemHead id">No.</div>
-            {KEYS.map((key, index: number) => (
-              <Button
-                key={index}
-                button={key}
-                sort={sort}
-                handleSort={handleSort}
-              ></Button>
-            ))}
+            <button className="ItemHead id">No.</button>
+            <button className="ItemHead users">チーム名</button>
+            <button className="ItemHead point">勝ち点</button>
+            <button className="ItemHead score">得失点差</button>
+            <button className="ItemHead times">試合数</button>
+            <button className="ItemHead ratio">勝率</button>
+            <button className="ItemHead count">セット率</button>
           </div>
           {entryTeam.teamList.length > 0 && (
             <ul className="List">
