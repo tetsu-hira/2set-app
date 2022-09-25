@@ -22,11 +22,8 @@ const Item: React.FC = () => {
   const [drawLose, setDrawLose] = useState<number>(0);
 
   const entryTeam = useSelector((state: RootState) => state.entryTeam);
-
   const controlMatch = useSelector((state: RootState) => state.controlMatch);
-
   const setSort = useSelector((state: RootState) => state.setSort);
-
   const dispatch = useDispatch();
   const teamName = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (team) {

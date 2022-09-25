@@ -17,7 +17,7 @@ export const Button = (props: ButtonProps) => {
       className={`ItemHead ${button}`}
       key={button}
     >
-      {button.charAt(0).toUpperCase() + button.slice(1)}
+      {button}
     </button>
   );
 };
